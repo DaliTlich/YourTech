@@ -9,6 +9,7 @@ import { ProdOrdComponent } from './prod-ord/prod-ord.component';
 import { ProdTelComponent } from './prod-tel/prod-tel.component';
 import { ProdAccessoiresComponent } from './prod-accessoires/prod-accessoires.component';
 import { HomeComponent } from './home/home.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './home/home.component';
       {path: 'ordinateursettablettes', component: ProdOrdComponent},
       {path: 'telephonie', component: ProdTelComponent},
       {path: 'accessoires', component: ProdAccessoiresComponent}
-    ])
+    ]),
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
