@@ -12,16 +12,20 @@ import { IProduit } from 'src/app/Iterfaces/iproduit';
 
 export class ProdOrdComponent implements OnInit {
 
-    public products: IProduit[];
-    public selectedProduct: IProduit;
+    //public products: IProduit[];
+    public products: any;
+    public selectedProduct: any;
     constructor(private productService: ProductService) { }
+    // ngOnInit() {
+    //   this.productService.getProducts().subscribe((products) => {this.products = products;
+    //     console.log(products);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    //   );
+    // }
     ngOnInit() {
-      this.productService.getProducts().subscribe((products) => {this.products = products;
-        console.log(products);
-      },
-      (error) => {
-        console.log(error);
-      }
-      );
+      this.products = this.productService.getProducts().subscribe((response) => this.products = response);
     }
   }

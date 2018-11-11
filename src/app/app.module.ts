@@ -9,7 +9,11 @@ import { ProdOrdComponent } from './prod-ord/prod-ord.component';
 import { ProdTelComponent } from './prod-tel/prod-tel.component';
 import { ProdAccessoiresComponent } from './prod-accessoires/prod-accessoires.component';
 import { HomeComponent } from './home/home.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AjSuppProdComponent } from './aj-supp-prod/aj-supp-prod.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { HttpModule } from '@angular/http';
     ProdOrdComponent,
     ProdTelComponent,
     ProdAccessoiresComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent,
+    LoginComponent,
+    AjSuppProdComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +35,13 @@ import { HttpModule } from '@angular/http';
       {path: '', component: HomeComponent},
       {path: 'ordinateursettablettes', component: ProdOrdComponent},
       {path: 'telephonie', component: ProdTelComponent},
-      {path: 'accessoires', component: ProdAccessoiresComponent}
+      {path: 'accessoires', component: ProdAccessoiresComponent},
+      {path: 'contact', component: ContactComponent},
+      {path: 'login', component: LoginComponent}
     ]),
-    HttpModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

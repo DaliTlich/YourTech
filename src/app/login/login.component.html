@@ -1,0 +1,56 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Login</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text" class="form-control" id="username"
+               required
+               [(ngModel)]="model.username" name="username"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Username is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" required
+               [(ngModel)]="model.password" name="password" #name="ngModel">
+               <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Password is required
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <div class="row">
+    <div *ngIf="(model.username == 'admin'|| model.username == 'Admin') && (model.password == 'admin'); else stay" class="col-xs-3">
+      <app-aj-supp-prod></app-aj-supp-prod>
+      <button class="btn btn-primary" (click)="submitted=false">Déconnexion</button>
+    </div>
+
+  </div>
+
+  </div>
+</div>
+
+
+<ng-template #stay>
+  <div class="container py-5">
+    <div class="row">
+        <div class="col-sm">
+      <div class="alert alert-danger" role="alert">
+            Cet accès est réservé aux administrateurs du site !
+      </div>
+      <button class="btn btn-danger" (click)="submitted=false">Retour</button>
+    </div>
+    </div>
+  </div>
+</ng-template>
