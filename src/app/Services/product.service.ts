@@ -27,4 +27,11 @@ export class ProductService {
     return this._http.get(this.urlController);
   }
 
+  getProductsOrd() {
+    return this._http.get('http://localhost:8080/api/produitsord');
+  }
+
+  getProductsTel() {
+    return this._http.get('http://localhost:8080/api/produitstel');
+  }
 }

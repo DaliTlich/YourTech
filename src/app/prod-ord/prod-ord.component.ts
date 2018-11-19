@@ -12,7 +12,7 @@ import { IProduit } from 'src/app/Iterfaces/iproduit';
 
 export class ProdOrdComponent implements OnInit {
 
-    //public products: IProduit[];
+    // public products: IProduit[];
     public products: any;
     public selectedProduct: any;
     constructor(private productService: ProductService) { }
@@ -26,6 +26,6 @@ export class ProdOrdComponent implements OnInit {
     //   );
     // }
     ngOnInit() {
-      this.products = this.productService.getProducts().subscribe((response) => this.products = response);
+      this.products = this.productService.getProductsOrd().subscribe((response) => this.products = response);
     }
   }

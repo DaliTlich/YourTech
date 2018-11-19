@@ -28,5 +28,15 @@ public class MyProductController {
         //This returns a JSON or XML with the users
         return produitRepository.findAll();
     }
+    
+    @GetMapping(path="/produitsord")
+    public @ResponseBody Iterable<Produit>getOrdProducts(){
+    	return produitRepository.findByCat("ordettab");
+    }
+    
+    @GetMapping(path="/produitstel")
+    public @ResponseBody Iterable<Produit>getTelProducts(){
+    	return produitRepository.findByCat("tel");
+    }
 }
 
