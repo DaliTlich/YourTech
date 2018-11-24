@@ -2,10 +2,10 @@
   <div class="row justify-content-between">
     <ng-container *ngFor="let p of products; let i=index" >
       <div class="col-4 mb-5">
-          <div class="card" style="width: 18rem;">
+          <div class="card h-100 shadow" style="width: 18rem;">
               <img class="card-img-top" [src]="p.image" alt="Card image cap">
               <div class="card-body text-center">
-                <h5 class="card-title">{{p.nomprod}}</h5>
+                <h5 class="card-title text-truncate">{{p.nomProd}}</h5>
                 <h4 id="product-price">{{p.prix}} TND </h4>
                 <a href="#" class="btn btn-primary" (click)="selectedProduct = p" data-toggle="modal" data-target="#card">Description</a>
               </div>
@@ -15,7 +15,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"> {{selectedProduct?.nomprod}} </h5>
+                <h5 class="modal-title" id="exampleModalLongTitle"> {{selectedProduct?.nomProd}} </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
