@@ -14,6 +14,8 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AjSuppProdComponent } from './aj-supp-prod/aj-supp-prod.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { AjSuppProdComponent } from './aj-supp-prod/aj-supp-prod.component';
     ]),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA9e7b6x65Ro3nmyf15mBRxS8MRvwgZamg'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

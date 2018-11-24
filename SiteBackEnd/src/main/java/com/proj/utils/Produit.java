@@ -1,4 +1,4 @@
-package controller;
+package com.proj.utils;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ public class Produit {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	private String nomprod;
 	private float prix;
 	private String image;
@@ -38,10 +38,10 @@ public class Produit {
 	public void setDecrip(String decrip) {
 		this.descrip = decrip;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNomProd() {

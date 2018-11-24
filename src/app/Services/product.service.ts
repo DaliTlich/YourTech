@@ -34,4 +34,9 @@ export class ProductService {
   getProductsTel() {
     return this._http.get('http://localhost:8080/api/produitstel');
   }
+
+  delProd(iden: number) {
+    return this._http.get('http://localhost:8080/api/supp?id=' + iden);
+  }
+
 }

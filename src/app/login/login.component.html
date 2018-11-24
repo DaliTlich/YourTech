@@ -31,9 +31,11 @@
 
   <div [hidden]="!submitted">
     <div class="row">
-    <div *ngIf="(model.username == 'admin'|| model.username == 'Admin') && (model.password == 'admin'); else stay" class="col-xs-3">
+    <div *ngIf="(model.username == 'admin'|| model.username == 'Admin') && (model.password == 'admin'); else stay" class="mx-auto">
       <app-aj-supp-prod></app-aj-supp-prod>
+      <div class="mx-auto">
       <button class="btn btn-primary" (click)="submitted=false">Déconnexion</button>
+    </div>
     </div>
 
   </div>

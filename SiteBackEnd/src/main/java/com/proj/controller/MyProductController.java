@@ -1,7 +1,10 @@
-package controller;
+package com.proj.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.proj.repository.ProduitRepository;
+import com.proj.utils.Produit;
 
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/api")
@@ -38,5 +41,16 @@ public class MyProductController {
     public @ResponseBody Iterable<Produit>getTelProducts(){
     	return produitRepository.findByCat("tel");
     }
-}
+    
+    @GetMapping(path="/supp")
+    public @ResponseBody String delProd (@RequestParam String id) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+    	
+        produitRepository.deleteById(Long.parseLong(id));
+        return "deleted";
+    }
+    
+    }
 
