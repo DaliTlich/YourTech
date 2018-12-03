@@ -1,48 +1,159 @@
-<div class="container py-5">
-  <table class="table table-striped table-bordered table-hover">
-    <thead class="thead-dark">
+<div class="container mx-auto py-5">
+  <table class="table table-borderless">
+    <thead>
       <tr>
-        <th>Id</th>
-        <th>Nom du produit</th>
-        <th>Prix</th>
-        <th>Action</th>
+        <th><button class="btn btn-danger" data-toggle="collapse" data-target="#collapseExample" type="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            Supprimer un produit
+          </button></th>
+
+
+        <th><button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample1"
+            aria-expanded="false" aria-controls="collapseExample">
+            Ajouter un produit
+          </button></th>
       </tr>
     </thead>
-    <tbody>
-      <ng-container *ngFor="let p of products">
-        <tr>
-          <td>{{p.id}}</td>
-          <td>{{p.nomProd}}</td>
-          <td>{{p.prix}} DT</td>
-          <td><a><button class="btn btn-danger" (click)="selectedProduct = p" data-toggle="modal" data-target="#card">Supprimer</button></a></td>
-        </tr>
-      </ng-container>
-
-    </tbody>
   </table>
+</div>
 
-  <div class="modal fade text-center" id="card" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-center" id="exampleModalLongTitle"> Validation </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h4>
-            <p class="card-text text-center">Veuillez confirmer la suppression du produit:<br><b>{{selectedProduct?.nomProd}}</b></p>
-          </h4>
-        </div>
-        <div class="modal-footer ">
-          <div class="mx-auto">
-            <button type="submit" (click)="supprimer()" class="btn btn-danger">Confirmer</button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+
+
+
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Nom du produit</th>
+          <th>Prix</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let p of products">
+          <tr>
+            <td>{{p.id}}</td>
+            <td>{{p.nomProd}}</td>
+            <td>{{p.prix}} DT</td>
+            <td><a><button class="btn btn-danger" (click)="selectedProduct = p" data-toggle="modal" data-target="#card">Supprimer</button></a></td>
+          </tr>
+        </ng-container>
+
+      </tbody>
+    </table>
+
+    <div class="modal fade text-center" id="card" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLongTitle"> Validation </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4>
+              <p class="card-text text-center">Veuillez confirmer la suppression du produit:<br><b>{{selectedProduct?.nomProd}}</b></p>
+            </h4>
+          </div>
+          <div class="modal-footer ">
+            <div class="mx-auto">
+              <button type="submit" (click)="supprimer()" class="btn btn-danger">Confirmer</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+  </div>
+</div>
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body">
+
+<form (ngSubmit)="onSubmit()" #prodForm="ngForm">
+  <h4>Nouveau produit</h4>
+  <HR>
+  <div class="form-group">
+    <label for="product_name">Nom</label>
+    <!-- <input id="product_name" name="product_name" placeholder="Nom du produit" class="form-control input-md" type="text"> -->
+    <input type="text" class="form-control" id="product_name" placeholder="Nom du produit"
+               required
+               [(ngModel)]="modelp.nomProd" name="product_name"
+               #pname="ngModel">
+        <div [hidden]="pname.valid || pname.pristine"
+             class="alert alert-danger">
+         Nom de produit obligatoire
+        </div>
   </div>
 
+  <div class="form-group">
+      <label for="product_price">Prix</label>
+      <!-- <input id="product_price" name="product_price" placeholder="Prix du produit" class="form-control input-md" type="text" required> -->
+      <input type="text" class="form-control" id="product_price" placeholder="Prix du produit"
+               required
+               [(ngModel)]="modelp.prix" name="product_price"
+               #pr="ngModel">
+        <div [hidden]="pr.valid || pr.pristine"
+             class="alert alert-danger">
+         Prix du produit obligatoire
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="product_descrip">Description</label>
+        <textarea id="product_descrip" placeholder="Description du produit" class="form-control input-md" required [(ngModel)]="modelp.decrip" name="product_descrip"
+        #pdes="ngModel"></textarea>
+        <div [hidden]="pdes.valid || pdes.pristine"
+             class="alert alert-danger">
+         Description du produit obligatoire
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="product_categorie">Catégorie</label>
+        <select id="product_categorie" name="product_categorie" class="form-control input-md" required [(ngModel)]="modelp.categorie">
+            <option value="ordettab">Ordinateur ou tablette</option>
+            <option value="tel">Téléphone</option>
+            <option value="acc">Accessoire</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="product_image">Image</label>
+        <input type="text" class="form-control" id="product_image" placeholder="URL de l'image"
+               required
+               [(ngModel)]="modelp.image" name="product_image"
+               #pim="ngModel">
+        <div [hidden]="pim.valid || pim.pristine"
+               class="alert alert-danger">
+           Image du produit obligatoire
+        </div>
+        <!-- <input type="file" class="form-control-file" name="product_image" id="product_image" required [(ngModel)]="modelp.image"> -->
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!prodForm.form.valid" (click)="test();ajouter()">Ajouter</button>
+
+</form>
+
+<div [hidden]="!submittedp">
+<div class="mx-auto py-3">
+  <div class="alert alert-success" role="alert">
+    Produit ajouté avec succès !
+  </div>
+  <button class="btn btn-primary" (click)="submittedp=false">retour</button>
 </div>
+
+
+
+
+</div>
+</div>
+
+

@@ -15,8 +15,13 @@ public class MyProductController {
     private ProduitRepository produitRepository;
 
 
-    @GetMapping(path="/ajout")
-    public @ResponseBody String ajNouvProd (@RequestParam String nomprod
+    @PostMapping(path="/ajout")
+    public @ResponseBody String addProduct(@RequestBody Produit produit){
+
+        produitRepository.save(produit);
+        return "Product successfully added ";
+    }
+    /*public @ResponseBody String ajNouvProd (@RequestParam String nomprod
             , @RequestParam String description, @RequestParam String categorie, @RequestParam String price, @RequestParam String img) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
@@ -24,7 +29,7 @@ public class MyProductController {
         Produit prod = new Produit(nomprod, Float.parseFloat(price) , img , description, categorie);
         produitRepository.save(prod);
         return "Saved";
-    }
+    }*/
 
     @GetMapping(path="/produits")
     public @ResponseBody Iterable<Produit> getAllProducts() {
@@ -40,6 +45,11 @@ public class MyProductController {
     @GetMapping(path="/produitstel")
     public @ResponseBody Iterable<Produit>getTelProducts(){
     	return produitRepository.findByCat("tel");
+    }
+    
+    @GetMapping(path="/produitsacc")
+    public @ResponseBody Iterable<Produit>getAccProducts(){
+    	return produitRepository.findByCat("acc");
     }
     
     @GetMapping(path="/supp")
