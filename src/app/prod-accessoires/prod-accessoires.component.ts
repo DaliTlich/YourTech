@@ -13,7 +13,8 @@ export class ProdAccessoiresComponent implements OnInit {
     public selectedProduct: any;
     constructor(private productService: ProductService) { }
     ngOnInit() {
-      this.products = this.productService.getProductsAcc().subscribe((response) => this.products = response);
+      // this.products = this.productService.getProductsAcc().subscribe((response) => this.products = response);
+      this.products = this.productService.getProductsByCat('acc').subscribe((response) => this.products = response);
     }
 
 }

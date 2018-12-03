@@ -37,7 +37,7 @@ public class MyProductController {
         return produitRepository.findAll();
     }
     
-    @GetMapping(path="/produitsord")
+    /*@GetMapping(path="/produitsord")
     public @ResponseBody Iterable<Produit>getOrdProducts(){
     	return produitRepository.findByCat("ordettab");
     }
@@ -50,7 +50,13 @@ public class MyProductController {
     @GetMapping(path="/produitsacc")
     public @ResponseBody Iterable<Produit>getAccProducts(){
     	return produitRepository.findByCat("acc");
+    }*/
+    
+    @GetMapping(path="/produitscat")
+    public @ResponseBody Iterable<Produit>getProductsByCat(@RequestParam String categorie){
+    	return produitRepository.findByCat(categorie);
     }
+    
     
     @GetMapping(path="/supp")
     public @ResponseBody String delProd (@RequestParam String id) {

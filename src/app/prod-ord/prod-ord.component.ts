@@ -16,6 +16,7 @@ export class ProdOrdComponent implements OnInit {
     public selectedProduct: any;
     constructor(private productService: ProductService) { }
     ngOnInit() {
-      this.products = this.productService.getProductsOrd().subscribe((response) => this.products = response);
+      // this.products = this.productService.getProductsOrd().subscribe((response) => this.products = response);
+      this.products = this.productService.getProductsByCat('ordettab').subscribe((response) => this.products = response);
     }
   }

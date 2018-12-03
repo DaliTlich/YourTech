@@ -34,7 +34,7 @@ export class ProductService {
     return this._http.get(this.urlController);
   }
 
-  getProductsOrd() {
+  /*getProductsOrd() {
     return this._http.get('http://localhost:8080/api/produitsord');
   }
 
@@ -44,6 +44,10 @@ export class ProductService {
 
   getProductsAcc() {
     return this._http.get('http://localhost:8080/api/produitsacc');
+  }*/
+
+  getProductsByCat(cate: string) {
+    return this._http.get('http://localhost:8080/api/produitscat?categorie=' + cate);
   }
 
   delProd(iden: number) {
