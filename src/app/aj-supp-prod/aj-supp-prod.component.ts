@@ -28,7 +28,7 @@ export class AjSuppProdComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.productService.getProducts().subscribe((response) => this.products = response);
+    this.productService.getProducts().subscribe((response) => this.products = response);
   }
 
   supprimer() {

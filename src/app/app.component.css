@@ -3,3 +3,22 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+.watermark {
+  width: auto;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.watermark::after {
+  content: "";
+ background:url(/Images/Elegant_Background-19.jpg);
+  opacity: 0.15;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}

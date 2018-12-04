@@ -11,7 +11,7 @@ import { Produit } from '../produit';
 })
 
 export class ProductService {
-  private urlController = 'http://localhost:8080/api/produits';
+  private urlController = 'http://localhost:8080/api';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -31,7 +31,7 @@ export class ProductService {
   // }
   constructor(private _http: HttpClient) {}
   getProducts() {
-    return this._http.get(this.urlController);
+    return this._http.get(this.urlController + '/produits');
   }
 
   /*getProductsOrd() {
@@ -47,15 +47,15 @@ export class ProductService {
   }*/
 
   getProductsByCat(cate: string) {
-    return this._http.get('http://localhost:8080/api/produitscat?categorie=' + cate);
+    return this._http.get( this.urlController + '/produitscat?categorie=' + cate);
   }
 
   delProd(iden: number) {
-    return this._http.get('http://localhost:8080/api/supp?id=' + iden);
+    return this._http.get(this.urlController + '/supp?id=' + iden);
   }
 
   ajoutProd(produit: Produit) {
-    return this._http.post('http://localhost:8080/api/ajout', JSON.stringify(produit), this.httpOptions);
+    return this._http.post(this.urlController + '/ajout', JSON.stringify(produit), this.httpOptions);
   }
 
 }

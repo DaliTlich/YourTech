@@ -15,7 +15,7 @@ export class ProdTelComponent implements OnInit {
   constructor(private productService: ProductService) { }
   ngOnInit() {
     // this.products = this.productService.getProductsTel().subscribe((response) => this.products = response);
-    this.products = this.productService.getProductsByCat('tel').subscribe((response) => this.products = response);
+    this.productService.getProductsByCat('tel').subscribe((response) => this.products = response);
   }
 
 }
