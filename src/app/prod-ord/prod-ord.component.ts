@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Subscription } from 'rxjs';
+import { CartService } from '../Services/cart.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ProdOrdComponent implements OnInit, OnDestroy {
     public products: any;
     private abonnement = new Subscription();
     public selectedProduct: any;
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService,private cS: CartService) {}
 
     ngOnInit() {
       this.abonnement = this.productService.getProductsByCat('ordettab').subscribe((response) => this.products = response);

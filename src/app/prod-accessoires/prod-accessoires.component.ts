@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Produit } from 'src/app/produit';
 import { Subscription } from 'rxjs';
+import { CartService } from '../Services/cart.service';
 
 @Component({
   selector: 'app-prod-accessoires',
@@ -14,7 +15,7 @@ export class ProdAccessoiresComponent implements OnInit, OnDestroy {
     public products: any;
     public selectedProduct: any;
     private abonnement = new Subscription();
-    constructor(private productService: ProductService) { }
+    constructor(private productService: ProductService, private cS : CartService) { }
 
     ngOnInit() {
       this.abonnement = this.productService.getProductsByCat('acc').subscribe((response: Produit[] ) => this.products = response);

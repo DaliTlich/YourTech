@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AjSuppProdComponent } from './aj-supp-prod/aj-supp-prod.component';
 import { AgmCoreModule } from '@agm/core';
+import { CookieService } from 'ngx-cookie-service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -29,11 +31,13 @@ import { AgmCoreModule } from '@agm/core';
     HomeComponent,
     ContactComponent,
     LoginComponent,
-    AjSuppProdComponent
+    AjSuppProdComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {path: 'chariot', component: ShoppingCartComponent},
       {path: '', component: HomeComponent},
       {path: 'ordinateursettablettes', component: ProdOrdComponent},
       {path: 'telephonie', component: ProdTelComponent},
@@ -48,7 +52,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyA9e7b6x65Ro3nmyf15mBRxS8MRvwgZamg'
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

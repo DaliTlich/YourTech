@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../Services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cS : CartService) { }
 
   ngOnInit() {
   }
