@@ -1,23 +1,13 @@
-<!-- <div class="container mx-5">
-<div class="form-group">
-  <label for="product_sort">Trier par : </label>
-  <select id="product_sort" name="product_sort" class="form-control input-md" [(ngModel)]="sortBy">
-      <option value="ordettab">Ordinateur ou tablette</option>
-      <option value="tel">Téléphone</option>
-      <option value="acc">Accessoire</option>
-  </select>
-</div>
-</div> -->
 <div class="container mt-4 text-center">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Trier par
   </button>
   <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button" (click)="test()">Nom, (A-Z)</button>
-    <button class="dropdown-item" type="button">Nom, (Z-A)</button>
-    <button class="dropdown-item" type="button">Prix, croissant </button>
-    <button class="dropdown-item" type="button">Prix, décroissant </button>
+    <button class="dropdown-item" type="button" (click)="sortBy('alphacroi')">Nom, (A-Z)</button>
+    <button class="dropdown-item" type="button" (click)="sortBy('alphadecroi')">Nom, (Z-A)</button>
+    <button class="dropdown-item" type="button"(click)="sortBy('numcroi')">Prix, croissant </button>
+    <button class="dropdown-item" type="button" (click)="sortBy('numdecroi')">Prix, décroissant </button>
   </div>
 </div>
 </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Produit } from 'src/app/produit';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-prod-accessoires',
@@ -8,18 +9,28 @@ import { Produit } from 'src/app/produit';
   styleUrls: ['./prod-accessoires.component.css'],
   providers: [ProductService]
 })
-export class ProdAccessoiresComponent implements OnInit {
+export class ProdAccessoiresComponent implements OnInit, OnDestroy {
 
     public products: any;
     public selectedProduct: any;
-    public sortBy: any;
+    private abonnement = new Subscription();
     constructor(private productService: ProductService) { }
+
     ngOnInit() {
-      // this.products = this.productService.getProductsAcc().subscribe((response) => this.products = response);
-      this.productService.getProductsByCat('acc').subscribe((response: Produit[] ) => this.products = response);
+      this.abonnement = this.productService.getProductsByCat('acc').subscribe((response: Produit[] ) => this.products = response);
     }
-    test() {
-      console.log('cv');
+
+    sortBy(crit: String) {
+      switch (crit) {
+      case 'alphacroi' : {this.products.sort((a, b) => a.nomProd.localeCompare(b.nomProd)); break; }
+      case 'alphadecroi' : {this.products.sort((a, b) => a.nomProd.localeCompare(b.nomProd)).reverse(); break; }
+      case 'numcroi' : {this.products.sort((a, b) => a.prix - b.prix ); break; }
+      case 'numdecroi' : {this.products.sort((a, b) => b.prix - a.prix ); break; }
     }
+  }
+
+  ngOnDestroy() {
+    this.abonnement.unsubscribe();
+  }
 
 }

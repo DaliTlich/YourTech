@@ -1,8 +1,22 @@
+<div class="container mt-4 text-center">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Trier par
+    </button>
+    <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenu2">
+      <button class="dropdown-item" type="button" (click)="sortBy('alphacroi')">Nom, (A-Z)</button>
+      <button class="dropdown-item" type="button" (click)="sortBy('alphadecroi')">Nom, (Z-A)</button>
+      <button class="dropdown-item" type="button"(click)="sortBy('numcroi')">Prix, croissant </button>
+      <button class="dropdown-item" type="button" (click)="sortBy('numdecroi')">Prix, décroissant </button>
+    </div>
+  </div>
+  </div>
+
 <div class="container my-5">
   <div class="row justify-content-between">
     <ng-container *ngFor="let p of products; let i=index" >
       <div class="col-4 mb-5">
-          <div class="card h-100 shadow" style="width: 18rem;">
+          <div class="card h-100 shadow bg-light" style="width: 18rem;">
               <img class="card-img-top" [src]="p.image" alt="Card image cap">
               <div class="card-body text-center">
                 <h5 class="card-title text-truncate">{{p.nomProd}}</h5>

@@ -1,29 +1,24 @@
-<nav class="navbar py-0 navbar-expand-md navbar-dark bg-primary">
-    <a class="navbar-brand" py-0 href="#">YourTech</a>
-    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation"></button>
-    <div class="collapse py-0 navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav py-0 mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" py-0 href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" py-0  routerLink="/contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" py-0  routerLink="/login">Login</a>
+
+<nav class="navbar navbar-expand-md navbar-dark divider">
+  <a href="#" class="navbar-brand"><img src="/YourTechLogo2.png" alt=""></a>
+  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navigation">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+              <a href="#" class="nav-link">Home</a>
           </li>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Action 1</a>
-                    <a class="dropdown-item" href="#">Action 2</a>
-                </div>
-            </li> -->
-        </ul>
-        <form class="form-inline input-group-sm">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
-        </form>
-    </div>
+          <li class="nav-item">
+              <a href="#" class="nav-link" routerLink="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+              <a href="#" class="nav-link" routerLink="/login">Login</a>
+          </li>
+      </ul>
+      <form class="form-inline input-group-sm">
+        <input class="form-control mr-mc-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+    </form>
+  </div>
 </nav>
