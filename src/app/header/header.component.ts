@@ -9,7 +9,11 @@ import { CartService } from '../Services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private cS : CartService) { }
+  constructor(private cS: CartService) { }
+
+  getTotalCount() {
+    return this.cS.getTotalCount();
+  }
 
   ngOnInit() {
   }

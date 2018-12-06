@@ -16,11 +16,11 @@
               <a href="#" class="nav-link" routerLink="/login">Login</a>
           </li>
       </ul>
-    
+
       <form class="form-inline input-group-sm">
         <div class="form-inline cartAll">
             <button class="CartButton nav-item" routerLinkActive="active current" routerLink="/chariot" ><i class='fa fa-shopping-cart cartIcon'></i></button>
-            <p class='cartCount'>{{cS.getTotalCount()}}</p>          
+            <p class='cartCount'>{{getTotalCount()}}</p>
         </div>
         <input class="form-control mr-mc-2" type="text" placeholder="Search">
         <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
