@@ -15,6 +15,7 @@ export class AffproduitsComponent implements OnInit, OnDestroy {
 
   public products: Produit[];
   public selectedProduct: any;
+  public longueur: Number;
   public categorieName: string;
   private abonnement = new Subscription();
   constructor(private productService: ProductService, private cS: CartService, private routeActuelle: ActivatedRoute) { }
@@ -22,8 +23,8 @@ export class AffproduitsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.abonnement = this.routeActuelle.params.subscribe(params => {
       this.categorieName = params['categorieName'];
-      this.productService.getProductsByCat(this.categorieName).subscribe((response: Produit[] ) =>  { this.products = response ;
-        console.log(this.products.length); } );
+      this.productService.getProductsByCat(this.categorieName).subscribe((response: Produit[] ) => {this.products = response;
+            this.longueur = this.products.length; });
   });
   }
 
@@ -38,6 +39,9 @@ export class AffproduitsComponent implements OnInit, OnDestroy {
 
 addItemToCart(idProduit: number) {
   this.cS.addCartItem(idProduit);
+}
+getNombreproduits() {
+ return this.longueur;
 }
 
 ngOnDestroy() {
