@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-import com.proj.utils.Produit;
+import com.proj.models.Produit;
 
 @Repository
 public interface ProduitRepository extends CrudRepository<Produit,Long> {
@@ -16,4 +16,11 @@ public interface ProduitRepository extends CrudRepository<Produit,Long> {
 	        nativeQuery=true
 	    )
 	    public Iterable<Produit> findByCat(@Param("categorie") String categorie);
+	
+	@Query(
+	        value = "SELECT * FROM produit t where MONTH(t.dateajout) = MONTH(CURRENT_DATE())", 
+	        nativeQuery=true
+	    )
+	    public Iterable<Produit> findNewProd();
+	
 }

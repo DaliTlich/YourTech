@@ -58,4 +58,8 @@ export class ProductService {
     return this._http.post(this.urlController + '/ajout', JSON.stringify(produit), this.httpOptions);
   }
 
+  getNewProds() {
+    return this._http.get(this.urlController + '/produitsnouv');
+  }
+
 }

@@ -1,9 +1,14 @@
-package com.proj.utils;
+package com.proj.models;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -17,6 +22,10 @@ public class Produit {
 	private String image;
 	private String descrip;
 	private String categorie;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dateajout;
 	
 	public Produit() {}
 	public Produit(String nomProd, float prix, String urlimage, String decrip, String categorie) {
@@ -73,8 +82,15 @@ public class Produit {
                 ", image url='" + this.image + '\'' +
                 ", description='" + this.descrip + '\'' +
                 ", categorie='" + this.categorie + '\'' +
+                ", Date dajout='" + this.dateajout + '\'' +
                 '}';
     }
+	public Date getDateajout() {
+		return dateajout;
+	}
+	public void setDateajout() {
+		this.dateajout=new Date();
+	}
 	
 	
 }

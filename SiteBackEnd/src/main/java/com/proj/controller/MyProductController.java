@@ -3,8 +3,8 @@ package com.proj.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.proj.models.Produit;
 import com.proj.repository.ProduitRepository;
-import com.proj.utils.Produit;
 
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/api")
@@ -17,19 +17,11 @@ public class MyProductController {
 
     @PostMapping(path="/ajout")
     public @ResponseBody String addProduct(@RequestBody Produit produit){
-
+    	produit.setDateajout();
         produitRepository.save(produit);
         return "Product successfully added ";
     }
-    /*public @ResponseBody String ajNouvProd (@RequestParam String nomprod
-            , @RequestParam String description, @RequestParam String categorie, @RequestParam String price, @RequestParam String img) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
-        Produit prod = new Produit(nomprod, Float.parseFloat(price) , img , description, categorie);
-        produitRepository.save(prod);
-        return "Saved";
-    }*/
+   
 
     @GetMapping(path="/produits")
     public @ResponseBody Iterable<Produit> getAllProducts() {
@@ -37,26 +29,17 @@ public class MyProductController {
         return produitRepository.findAll();
     }
     
-    /*@GetMapping(path="/produitsord")
-    public @ResponseBody Iterable<Produit>getOrdProducts(){
-    	return produitRepository.findByCat("ordettab");
-    }
-    
-    @GetMapping(path="/produitstel")
-    public @ResponseBody Iterable<Produit>getTelProducts(){
-    	return produitRepository.findByCat("tel");
-    }
-    
-    @GetMapping(path="/produitsacc")
-    public @ResponseBody Iterable<Produit>getAccProducts(){
-    	return produitRepository.findByCat("acc");
-    }*/
+   
     
     @GetMapping(path="/produitscat")
     public @ResponseBody Iterable<Produit>getProductsByCat(@RequestParam String categorie){
     	return produitRepository.findByCat(categorie);
     }
     
+    @GetMapping(path="/produitsnouv")
+    public @ResponseBody Iterable<Produit>getNewProducts(){
+    	return produitRepository.findNewProd();   
+    }
     
     @GetMapping(path="/supp")
     public @ResponseBody String delProd (@RequestParam String id) {
@@ -67,6 +50,8 @@ public class MyProductController {
         produitRepository.deleteById(Long.parseLong(id));
         return "deleted";
     }
+    
+    
     
     }
 
