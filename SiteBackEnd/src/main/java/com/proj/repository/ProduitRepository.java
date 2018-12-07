@@ -23,4 +23,10 @@ public interface ProduitRepository extends CrudRepository<Produit,Long> {
 	    )
 	    public Iterable<Produit> findNewProd();
 	
+	@Query(
+	        value = "SELECT * FROM produit t where t.id = :id", 
+	        nativeQuery=true
+	    )
+	    public Iterable<Produit> findProdById(@Param("id") Long id);
+	
 }

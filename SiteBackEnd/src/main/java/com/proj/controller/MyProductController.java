@@ -29,6 +29,11 @@ public class MyProductController {
         return produitRepository.findAll();
     }
     
+    @GetMapping(path="/produitsid")
+    public @ResponseBody Iterable<Produit> getAllProductId(@RequestParam String id) {
+        //This returns a JSON or XML with the users
+        return produitRepository.findProdById(Long.parseLong(id));
+    }
    
     
     @GetMapping(path="/produitscat")
