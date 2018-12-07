@@ -147,17 +147,13 @@
 
 </form>
 
-<div [hidden]="!submittedp">
-<div class="mx-auto py-3">
-  <div class="alert alert-success" role="alert">
-    Produit ajouté avec succès !
+<div [hidden]="!aff">
+  <div class="mx-auto py-3">
+    <div class="alert align-text-center alert-success" role="alert">
+      Produit ajouté avec succès !
+    </div>
+    <button class="btn btn-primary" (click)="aff=false; prodForm.reset()">retour</button>
   </div>
-  <button class="btn btn-primary" (click)="submittedp=false">retour</button>
-</div>
-
-
-
-
 </div>
 </div>
 

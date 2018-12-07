@@ -22,7 +22,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div *ngIf="products.length!=0; else erreur">
+
   <div class="container mt-4 text-center">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,6 +50,7 @@
                   </div>
                 </div>
           </div>
+
           <div  class="modal fade" id="card" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -73,13 +74,6 @@
       </ng-container>
       </div>
       </div>
-    </div>
 
-    <ng-template #erreur>
-        <div class="container d-flex flex-row justify-content-center align-items-center mt-5">
-            <img src="/Images/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg">
-          </div>
-
-    </ng-template>
 
 

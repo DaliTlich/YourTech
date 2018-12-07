@@ -12,6 +12,7 @@ export class AjSuppProdComponent implements OnInit {
 
   modelp = new Produit();
   submittedp = false;
+  aff: boolean;
   public products: any;
   public selectedProduct: any;
   constructor(private productService: ProductService) { }
@@ -28,6 +29,7 @@ export class AjSuppProdComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.aff = false;
     this.productService.getProducts().subscribe((response) => this.products = response);
   }
 
@@ -40,8 +42,14 @@ export class AjSuppProdComponent implements OnInit {
   }
 
   ajouter() {
+    if (this.modelp.prix < 0 || isNaN(Number(this.modelp.prix))) {
+      alert('Prix Invalide !');
+    } else {
+    this.aff = true;
     this.modelp.image = '/Images/' + this.modelp.image + '.jpg';
     this.productService.ajoutProd(this.modelp).subscribe(data => console.log(data), error => console.log(error));
   }
+  }
+
 
 }
