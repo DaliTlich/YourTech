@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { Headers, RequestOptions, Response, Http } from '@angular/http';
 import {map, catchError } from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {IProduit} from 'src/app/Iterfaces/iproduit';
-import { Produit } from '../produit';
+import { Produit } from '../Classes/produit';
 
 @Injectable({
   providedIn: 'root'

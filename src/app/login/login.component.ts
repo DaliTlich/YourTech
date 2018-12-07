@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Log } from 'src/app/log';
+import { Log } from 'src/app/Classes/log';
 
 @Component({
   selector: 'app-login',
