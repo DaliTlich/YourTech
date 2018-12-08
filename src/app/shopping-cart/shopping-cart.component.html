@@ -1,0 +1,35 @@
+<div *ngIf="cartProducts.length!=0; else erreur">
+    <div class="card card-body">
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+              <th></th>
+            <th>Nom du produit</th>
+            <th>Quantité</th>
+            <th>Prix Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let p of cartProducts">
+            <tr>                  
+                <td><img class="imgSize img-fluid" src="{{p.image}}" alt=""></td>
+                <td>{{p.nomProduit}}</td>
+                <td><div class="container quantity buttons_added align-items-center">
+                    <td><input type="button" value="-" class="minus" (click)="selectedProduct = p;removeFromCart()"></td><td><p class="qty text">{{p.quantity}}</p></td><td><input type="button" value="+" class="plus" (click)="selectedProduct = p;addToCart()"></td>
+                </div></td>
+                <td>{{p.price * p.quantity}} DT</td>
+                <td><a><button class="btn btn-danger" (click)="selectedProduct = p;delete()" data-toggle="modal" data-target="#card"><img class="removeCart" src="/Remove_from_Shopping_Cart.png"></button></a></td>
+            </tr>
+          </ng-container>
+  
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<ng-template #erreur>
+    <div class="container d-flex flex-row justify-content-center align-items-center mt-5">
+        <img class="imgSize1" src="/cartempty1.png">
+    </div>
+</ng-template>

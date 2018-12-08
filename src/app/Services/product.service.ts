@@ -61,4 +61,8 @@ export class ProductService {
     return this._http.get(this.urlController + '/produitsnouv');
   }
 
+  getProductById(id:string){
+    return this._http.get( this.urlController + '/produitsid?id=' + id);
+  }
+
 }
